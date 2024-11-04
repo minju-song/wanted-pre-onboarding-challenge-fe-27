@@ -34,7 +34,7 @@
 | 기본 로그인 화면 | 조건 만족 시 제출 버튼 활성화 | 회원 정보 틀렸을 때 알림 | 회원가입 화면 |
 
 🔸 TODO
-| 기본 페이지 | TODO 상세보기 | 새로운 TODO |
-|---|---|---|
-|<img width="875" alt="스크린샷 2024-11-04 오후 7 08 58" src="https://github.com/user-attachments/assets/e62a862e-aef8-4841-9a57-22825efe0ff3">|<img width="875" alt="스크린샷 2024-11-04 오후 7 09 42" src="https://github.com/user-attachments/assets/1fbec678-2718-48d0-94e0-3e6e30a8e3ff">|<img width="875" alt="스크린샷 2024-11-04 오후 7 10 22" src="https://github.com/user-attachments/assets/2e85e4ca-44a5-4b9c-974e-892ebfd32f2c">|
-| 처음 보이는 기본 화면 | 목록에서 클릭 시 보이는 상세 내용. 수정 / 삭제 기능 포함 | TODO 추가 |
+| TODO 상세보기 | 새로운 TODO |
+|---|---|
+|<img width="731" alt="스크린샷 2024-11-05 오전 12 50 42" src="https://github.com/user-attachments/assets/18d1eec5-de61-4585-956f-9e6497a97862">|<img width="691" alt="스크린샷 2024-11-05 오전 12 51 17" src="https://github.com/user-attachments/assets/118292d5-4606-4bf8-aa82-abd9131781df">|
+| 목록에서 클릭 시 보이는 상세 내용. 추가 / 수정 / 삭제 기능 포함 | TODO 추가 |
