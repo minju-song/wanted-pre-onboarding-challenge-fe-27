@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# 📌 React + TypeScript + Vite를 활용한 Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 원티드 프리온보딩
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 목차
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🔧 주요기능
 
-- Configure the top-level `parserOptions` property like this:
+- 🔒로그인 / 회원가입
+1. /auth 경로에 로그인 / 회원가입 기능을 개발
+2. 이메일과 비밀번호의 유효성을 확인 : 조건을 만족해야 제출 버튼이 활성화
+3. 로그인 API를 호출하고, 올바른 응답을 받았을 때 루트 경로로 이동
+4. 응답으로 받은 토큰은 로컬 스토리지에 저장
+   
+- 📝 Todo 리스트
+1. 목록 / 상세 영역으로 나누어 구현
+2. CRUD 기능
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🖥️ UI 미리보기
+🔸 홈화면
+| 로그인 안했을 때 | 로그인 했을 때 |
+|---|---|
+|<img width="670" alt="스크린샷 2024-11-04 오후 7 04 33" src="https://github.com/user-attachments/assets/774625e6-dc47-490a-8974-7d520f3d1d3b">|<img width="670" alt="스크린샷 2024-11-04 오후 7 05 29" src="https://github.com/user-attachments/assets/273ab18f-3f95-4d1d-934b-80531186c40c">
