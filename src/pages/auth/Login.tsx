@@ -13,6 +13,9 @@ function Login() {
     const [passwordFlag, setPasswordFlag] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isFail, setIsFail] = useState(false);
+
     const handleRegisterClick = async() => {
         navigate('/auth/register');
     }
@@ -22,11 +25,13 @@ function Login() {
             try {
                 const response: Promise<ApiResponse<any>> = login(email, password);
                 if((await response).status === 200) {
+                    setIsSuccess(true); setIsFail(false);
                     console.log((await response).data.message);
                     localStorage.setItem('token', (await response).data.token);
                     navigate('/')
                 }
             }catch {
+                setIsFail(true); setIsSuccess(false);
                 console.error('err')
             }
         }
@@ -53,8 +58,23 @@ function Login() {
     }, [emailFlag, passwordFlag])
 
     return (
-        <div>
-            <label className="input input-bordered flex items-center gap-2">
+        <div className='shadow-lg p-6 rounded-lg'>
+            { isFail && 
+                <div className="toast toast-top toast-center">
+                    <div className="alert alert-error">
+                        <span>아이디 혹은 비밀번호를 확인해주세요.</span>
+                    </div>
+                </div>
+            }
+            { isSuccess && 
+                <div className="toast toast-top toast-center">
+                    <div className="alert alert-success">
+                        <span>로그인 성공하였습니다.</span>
+                    </div>
+                </div>
+            }
+            <h3 className='mb-3 text-lg font-bold'>Login</h3>
+            <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -67,7 +87,7 @@ function Login() {
                 </svg>
                 <input type="email" className="grow" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </label>
-            <label className="input input-bordered flex items-center gap-2">
+            <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -80,13 +100,15 @@ function Login() {
                 </svg>
                 <input type="password" placeholder="Password" className="grow" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </label>
-            { isValid &&
-                <button className="btn btn-outline btn-success" onClick={handleLoginClick}>Sign Up</button>
-            }  
-            { !isValid && 
-                <button className="btn" disabled>Sign Up</button>          
-            }
-            <button className='btn btn-outline btn-primary' onClick={handleRegisterClick}>Register</button>
+            <div className='flex justify-center'>
+                { isValid &&
+                    <button className="btn btn-outline btn-success" onClick={handleLoginClick}>Sign Up</button>
+                }  
+                { !isValid && 
+                    <button className="btn" disabled>Sign Up</button>          
+                }
+                <button className='btn btn-outline btn-primary ml-2' onClick={handleRegisterClick}>Register</button>
+            </div>
         </div>
     )
 }

@@ -35,10 +35,10 @@ function Home() {
     }, []);
 
     return (
-        <div>
+        <div className='border-dotted rounded-md border-4 border-yellow-400'>
             { tokenFlag && 
                 <button 
-                className="btn btn-success m-3"
+                className="btn btn-error m-3"
                 onClick={handleLogoutClick}
                 >Logout</button>
             }
