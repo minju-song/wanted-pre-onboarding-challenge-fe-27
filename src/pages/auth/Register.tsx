@@ -12,18 +12,25 @@ function Register() {
     const [passwordFlag, setPasswordFlag] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isFail, setIsFail] = useState(false);
+
 
     const handleSignUpClick = async() => {
         if(isValid) {
             try {
                 const response: Promise<ApiResponse<any>> = signUp(email, password);
                 if((await response).status === 200) {
+                    setIsSuccess(true); setIsFail(false);
                     console.log((await response).data.message);
                     localStorage.setItem('token', (await response).data.token);
-                    navigate('/auth/login')
-                    
+                    navigate('/auth/login') 
+                }
+                else if((await response).status === 409) {
+                    setIsFail(true); setIsSuccess(false);
                 }
             }catch {
+                setIsFail(true); setIsSuccess(false);
                 console.error('err')
             }
         }
@@ -52,8 +59,23 @@ function Register() {
 
 
     return (
-        <div>
-            <label className="input input-bordered flex items-center gap-2">
+        <div className="shadow-lg p-6 rounded-lg">
+            { isFail && 
+                <div className="toast toast-top toast-center">
+                    <div className="alert alert-error">
+                        <span>이미 존재하는 아이디입니다.</span>
+                    </div>
+                </div>
+            }
+            { isSuccess && 
+                <div className="toast toast-top toast-center">
+                    <div className="alert alert-success">
+                        <span>회원 가입 성공하였습니다.</span>
+                    </div>
+                </div>
+            }
+            <h3 className='mb-3 text-lg font-bold'>Register</h3>
+            <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -66,7 +88,7 @@ function Register() {
                 </svg>
                 <input type="email" className="grow" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </label>
-            <label className="input input-bordered flex items-center gap-2">
+            <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"

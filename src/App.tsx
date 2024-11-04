@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
-import Todo from './pages/Todo';
+import TodoHome from './pages/TodoHome';
+import TodoPage from './pages/\bTodoPage';
 
 import './App.css'
 
@@ -15,7 +16,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/auth/login' element={<Login />} />
         <Route path='/auth/register' element={<Register/>}/>
-        <Route path='/todo' element={<Todo/>}/>
+        <Route path='/todo' element={<TodoHome />}/>
+        <Route path='/todo/:id' element={<TodoPage/>}/>
       </Routes>
     </BaseLayout>
   )
